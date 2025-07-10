@@ -1,21 +1,34 @@
 {
-    "manifest_version": 3,
-    "name": "Ad-bloc",
-    "version": "0.1",
-    "description": "Trying to make my first Ad-blocker.",
-    "permissions": [
-        "declarativeNetRequest",
-        "declarativeNetRequestWithHostAccess"
-    ],
-    "host_permissions": ["<all_urls>"],
-    "background": {
-        "service_worker": "background.js"
-    },
-    "content_scripts": [{
-        "matches": ["<all_urls>"],
-        "js": ["content.js"]
-    }],
-    "action": {
-        "default_popup": "popup.html"
+  "manifest_version": 3,
+  "name": "Ad-Bloc",
+  "version": "0.3",
+  "description": "Blocks ads, redirects, and malicious domains.",
+  "permissions": [
+    "declarativeNetRequest",
+    "declarativeNetRequestWithHostAccess",
+    "declarativeNetRequestFeedback",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "ui/popup.html",
+    "default_icon": "assets/icons/icon.png"
+  },
+  "background": {
+    "service_worker": "background/ruleManager.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/core.js", "content/youtube.js", "content/redirectProtector.js", "content/evasionBypass.js"]
     }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["rules/combined_rules.json"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
