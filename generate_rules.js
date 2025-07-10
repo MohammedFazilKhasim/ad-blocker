@@ -1,3 +1,4 @@
+require("dotenv").config();
 const fs = require("fs");
 const https = require("https");
 
@@ -38,7 +39,7 @@ const convertLineToRule = (line, id) => {
     }
   }
 
-  if (!fs.existsSync("rules")) fs.mkdirSync("rules");
+  fs.mkdirSync("rules", { recursive: true });
   fs.writeFileSync("rules/combined_rules.json", JSON.stringify(rules, null, 2));
   console.log("✅ Rules generated: rules/combined_rules.json");
 })();

@@ -1,0 +1,15 @@
+{
+  "name": "ad-bloc",
+  "version": "0.3.0",
+  "description": "A cross-platform, optimized ad blocker extension with dynamic rule updates.",
+  "main": "generate_rules.js",
+  "scripts": {
+    "generate:rules": "node generate_rules.js"
+  },
+  "keywords": ["adblock", "chrome-extension", "privacy", "declarativeNetRequest", "easylist"],
+  "author": "Mohammed Fazil Khasim",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}

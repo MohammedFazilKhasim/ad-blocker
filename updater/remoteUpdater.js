@@ -1,6 +1,6 @@
 (async () => {
   try {
-    const res = await fetch("https://MohammedFazilKhasim.github.io/ad-blocker/rules/combined_rules.json");
+    const res = await fetch(process.env.REMOTE_RULES_URL);
     const rules = await res.json();
 
     await chrome.declarativeNetRequest.updateDynamicRules({
